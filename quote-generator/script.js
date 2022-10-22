@@ -1,4 +1,6 @@
 
+// Cach 1
+
 const quoteContainer = document.querySelector('#quote-container'),
     quoteText = document.querySelector('#quote'),
     authorText = document.querySelector('#author'),
@@ -8,21 +10,19 @@ const quoteContainer = document.querySelector('#quote-container'),
 
 let apiQuotes = []
 
-// Show loading
-function loading(){
+function showLoadingSpinner(){
     loader.hidden = false
     quoteContainer.hidden = true
 }
 
-// Hide loading
-function complete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false
     loader.hidden = true
 }
 
 // Show new quote
 function newQuote(){
-    loading()
+    showLoadingSpinner()
     // Pick a random quote from apiQuotes
     const quote = apiQuotes[Math.floor(Math.random()*apiQuotes.length)]
 
@@ -43,12 +43,12 @@ function newQuote(){
     }
     // Set quote, hide loader
     quoteText.textContent = quote.text
-    complete()
+    removeLoadingSpinner()
 }
 
 // Get quotes from API
 async function getQuotes(){
-    loading()
+    showLoadingSpinner()
     const apiUrl = 'https://type.fit/api/quotes'
     try {
         const response = await fetch(apiUrl)
@@ -72,3 +72,71 @@ newQuoteBtn.addEventListener('click', newQuote)
 // On load
 getQuotes()
 
+
+// Cach 2
+
+// const quoteContainer = document.getElementById('quote-container'),
+//     quoteText = document.getElementById('quote'),
+//     authorText = document.getElementById('author'),
+//     twitterBtn = document.getElementById('twitter'),
+//     newQuoteBtn = document.getElementById('new-quote'),
+//     loader = document.getElementById('loader')
+
+
+// // Show loading
+// function loading(){
+//     loader.hidden = false
+//     quoteContainer.hidden = true
+// }
+
+// // Hide loading
+// function complete(){
+//     if(!loader.hidden){
+//         loader.hidden = true
+//         quoteContainer.hidden = false
+//     }
+// }
+
+// // Get quote from api
+// async function getQuote(){
+//     loading()
+//     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+//     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json'
+//     try {
+//         const response = await fetch(proxyUrl + apiUrl)
+//         const data = await response.json()
+//         if(!data.quoteAuthor || data.quoteAuthor === ''){
+//             authorText.innerText = 'Unknown'
+//         }
+//         else{
+//             authorText.innerText = data.quoteAuthor
+//         }
+//         if(data.quoteText.length > 50){
+//             quoteText.classList.add('long-quote')
+//         }
+//         else{
+//             quoteText.classList.remove('long-quote')
+//         }
+//         quoteText.innerText = data.quoteText
+//         complete()
+//         throw new Error('oops)
+//     } catch(error) {
+//         getQuote()
+//     }
+// }
+
+
+// // tweet quote
+// function tweetQuote() {
+//     const quote = quoteText.innerText
+//     const author = authorText.innerText
+//     const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`
+//     window.open(twitterUrl, '_blank')
+// }
+
+// // Event Listener
+// newQuoteBtn.addEventListener('click', getQuote)
+// twitterBtn.addEventListener('click', tweetQuote)
+
+// // On load
+// getQuote()
