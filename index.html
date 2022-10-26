@@ -21,6 +21,8 @@
         justify-content: center;
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         align-items: center;
+        background: black;
+        color: #fff;
         text-align: center;
       }
       .container {
@@ -28,11 +30,9 @@
         justify-content: center;
         align-items: center;
         padding: 50px 100px;
-        background: black;
-        height: 100vh;
+        min-height: 100vh;
         flex-direction: column;
         width: 100%;
-        color: #fff;
       }
       h1 {
         margin: 0 0 30px;
@@ -43,6 +43,8 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        padding: 0;
+        width: 100%;
       }
       ul li {
         margin: 0 10px 10px;
@@ -73,6 +75,23 @@
       .text span {
         font-style: italic;
         font-weight: normal;
+      }
+      @media screen and (max-width: 769px){
+        .container{
+          padding: 30px 15px;
+        }
+      }
+      @media screen and (max-width: 600px){
+        ul{
+          flex-direction: column;
+        }
+        ul li a{
+          width: 100%;
+        }
+        ul li{
+          width: 100%;
+          margin: 0 0 10px;
+        }
       }
     </style>
   </head>
