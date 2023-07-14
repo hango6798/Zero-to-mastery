@@ -33,8 +33,8 @@ function addDecimal(){
 const calculate = {
     '/': (firstNumber, secondNumber) => firstNumber / secondNumber,
     '*': (firstNumber, secondNumber) => firstNumber * secondNumber,
-    '+': (firstNumber, secondNumber) => firstNumber + secondNumber,
     '-': (firstNumber, secondNumber) => firstNumber - secondNumber,
+    '+': (firstNumber, secondNumber) => firstNumber + secondNumber,
     '=': (firstNumber, secondNumber) => secondNumber
 }
 
